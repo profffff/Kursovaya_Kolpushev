@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/register_style.css') }}">
+</head>
+      <body>
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Register</h3>
+                        <p>Fill in the data below.</p>
+                        <form method = 'post' class="requires-validation" novalidate>
+
+                            <div class="col-md-12">
+                               <input class="form-control" type="text" name="firstname" placeholder="First name" required>
+                               {%  if errors[0] %}
+                               <div class="invalid-feedback">Username field cannot be blank!</div>
+                                {%  endif %}
+                            </div>
+
+                            <div class="col-md-12">
+                               <input class="form-control" type="text" name="secondname" placeholder="Second name" required>
+                               {%  if errors[1] %}
+                               <div class="invalid-feedback">Username field cannot be blank!</div>
+                           {%  endif %}
+                            </div>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="email" name="login" placeholder="Login" required>
+                                 {%  if errors[2] %}
+                                 <div class="invalid-feedback">Email field cannot be blank!</div>
+                            {%  endif %}
+                            </div>
+
+                           <div class="col-md-12">
+                                <input class="form-control" type="email" name="age" placeholder="Age" required>
+                                {%  if errors[3] %}
+                                 <div class="invalid-feedback">Email field cannot be blank!</div>
+                           {%  endif %}
+                           </div>
+
+                           <div class="col-md-12">
+                              <input class="form-control" type="password" name="password" placeholder="Password" required>
+                              {%  if errors[4] %}
+                               <div class="invalid-feedback">Password field cannot be blank!</div>
+                           {%  endif %}
+                           </div>
+
+
+                           <div class="col-md-12 mt-3">
+                            <label class="mb-3 mr-1" for="gender">Gender: </label>
+
+                            <input type="radio" class="btn-check" name="gender" id="male" value="male" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
+
+                            <input type="radio" class="btn-check" name="gender" id="female" value="female" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
+
+                            <input type="radio" class="btn-check" name="gender" id="secret" value="nogender" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="secret">No gender</label>
+                               {%  if errors[5] %}
+                                <div class="invalid-feedback mv-up">Please select a gender!</div>
+                            {%  endif %}
+                           </div>
+
+
+                      <button>Register</button>
+                        {%  if errors[6] %}
+                                <div class="invalid-feedback mv-up">Account exists!</div>
+                            {%  endif %}
+
+                        <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

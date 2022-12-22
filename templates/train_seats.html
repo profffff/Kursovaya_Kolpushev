@@ -1,0 +1,97 @@
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='scss/train_seats.scss') }}">
+</head>
+<html>
+
+<div style='text-align: center'; class="train">
+<a href="{{ url_for('home') }}">Back</a>
+<form method="post" action="{{ url_for('pick_seat', train_id=train_id) }}">
+    <select name="vagonnumber" id="vagonnumber">
+        {%  for i in range(num_vagons) %}
+     <option value="{{i + 1}}">Vagon {{i + 1}} </option>
+        {% endfor %}
+  </select>
+<button type="submit">Go</button>
+
+
+  <div class="exit front train-body">
+    <div>Toilet</div><div></div><div></div>
+  </div>
+
+  <ol class="wagon train-body">
+    {% for i in range(vagon_and_seats[0][0]//4) %}
+    <li class="row row--1">
+          <ol class="seats"  >
+              {% if (i + count_seats)|string + 'A' in vagon_and_seats[0][1] %}
+              <li class="seat">
+              <input type="checkbox" disabled id="1A" />
+              <label for="1A">X</label>
+            </li>
+              {% else %}
+            <li class="seat">
+              <input name="seats" value="{{ i + count_seats}}A" type="checkbox" id="1A" />
+              <label for="1A">{{ i + count_seats}}A</label>
+            </li>
+              {% endif %}
+          {% if (i + count_seats)|string + 'B' in  vagon_and_seats[0][1] %}
+            <li class="seat">
+              <input type="checkbox" disabled id="1B" />
+              <label for="1B">X</label>
+            </li>
+          {% else %}
+          <li class="seat">
+              <input name="seats"  value="{{ i + count_seats}}B" type="checkbox" id="1B" />
+              <label for="1B">{{ i + count_seats}}B</label>
+            </li>
+          {% endif %}
+
+              <li class="seat">
+              <a>     </a>
+                  {% if (i + count_seats)|string + 'C' in vagon_and_seats[0][1] %}
+            </li>
+            <li class="seat">
+              <input type="checkbox" disabled id="1D" />
+              <label for="1D">X</label>
+            </li>
+          {% else %}
+          </li>
+            <li class="seat">
+              <input name="seats" value="{{ i + count_seats}}C" type="checkbox"  id="1D" />
+              <label for="1D">{{ i + count_seats}}C</label>
+            </li>
+          {% endif %}
+          {% if (i + count_seats)|string + 'D' in  vagon_and_seats[0][1] %}
+            <li class="seat">
+              <input type="checkbox" disabled id="1C" />
+              <label for="1C">X</label>
+            </li>
+          {% else %}
+          <li class="seat">
+              <input name="seats"  value="{{ i + count_seats}}D" type="checkbox" id="1C" />
+              <label for="1C">{{ i + count_seats}}D</label>
+            </li>
+           {% endif %}
+          </ol>
+        </li>
+      {% endfor %}
+
+  </ol>
+
+  <div class="exit back train-body">
+    <div>Toilet</div><div></div><div></div>
+  </div>
+{#</form>#}
+{#<form method="post" action="{{ url_for('pick_seat', train_id=train_id) }}">#}
+<button>Book a seat</button>
+{% if error %}
+    </br>
+    <a>So far, you can only book one seat at a time</a>
+{% endif %}
+</form>
+
+</div>
+
+
+
+</html>

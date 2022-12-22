@@ -1,0 +1,66 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+
+
+<section>
+  <header><h1>Train Schedule</h1></header>
+<form method="post">
+          <label>
+            <input name="from" id="name"  type="text" placeholder="From" />
+               <input name="to" id="name"  type="text" placeholder="To" />
+            <input name='date' type="date" class="form-control" id="pure-date" aria-describedby="date-design-prepend">
+          </label>
+          <button>Search</button>
+    {% if error %}
+    <div>Not valid data!</div>
+    {%  endif  %}
+</form>
+  <section>
+    <table class="v1">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Depart time</th>
+            <th>Arrival time</th>
+          <th>Train name</th>
+          <th>Train type</th>
+            <th>Tickets</th>
+        </tr>
+      </thead>
+        {% for data in route_and_data %}
+            {% for trains in data[1] %}
+      <tbody>
+        <tr data-date="Aug. 30, 3:00 PM">
+          <td>{{ data[2]['station_name']  }}</td>
+          <td>{{ data[3]['station_name'] }}</td>
+
+          <td>{{ data[2]['depart_time']  }}</td>
+            <td>{{ data[3]['depart_time']  }}</td>
+          <td>{{ trains ['train_name'] }}</td>
+          <td>{{ trains ['train_type']}}</td>
+          <td><a href="{{ url_for('pick_seat', train_id=trains ['train_id']) }}">Buy ticket</a></td>
+        </tr>
+            {% endfor %}
+                  <tr class="bye">
+          <td colspan="6">
+            <span>ROUTE</span>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</section>
+
+
+
+
+
+{% endblock %}

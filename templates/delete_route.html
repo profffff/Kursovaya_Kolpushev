@@ -1,0 +1,20 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+<section>
+
+<header ><h1>ROUTES</h1></header>
+    {% for route in routes %}
+    <a href="{{ url_for('delete_this_route', route_id=route['route_id']) }}">
+       DELETE!!! {{ route['route_id'] }} {{ route['route_name'] }}</a>
+      </br>
+    {% endfor %}
+</div>
+</section>
+
+{% endblock %}

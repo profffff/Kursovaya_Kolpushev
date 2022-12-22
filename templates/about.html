@@ -1,0 +1,32 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+<section>
+<div style="text-align: center">
+<header ><h1>SUAI RAILWAYS ©</h1></header>
+{% if isadmin %}
+    <form method="post" action="{{ url_for('create_new_route') }}">
+    <button>Create new route</button>
+    </form>
+    </br> </br>
+    <form method="post" action="{{ url_for('create_new_train') }}">
+    <button>Add train to route</button>
+    </form>
+    </br> </br>
+    <form method="post" action="{{ url_for('delete_train') }}">
+    <button>Delete train</button>
+    </form>
+    </br> </br>
+    <form method="post" action="{{ url_for('delete_route') }}">
+    <button>Delete route</button>
+    </form>
+{% endif %}
+</div>
+</section>
+
+{% endblock %}

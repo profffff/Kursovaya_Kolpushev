@@ -1,0 +1,17 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+<section>
+<header><h1>Profile info</h1></header>
+<h1>Name: {{ account['first_name'] }}</h1>
+<h1>Last name: {{ account['second_name'] }}</h1>
+<h1>Age: {{ account['age'] }}</h1>
+<h1>Gender: {{ account['gender'] }}</h1>
+</section>
+
+{% endblock %}

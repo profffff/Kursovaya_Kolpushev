@@ -1,0 +1,45 @@
+
+    <head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/buy_ticket_style.css') }}">
+</head>
+
+<main>
+
+	<article class="ticket-wrapper">
+		<section class="info">
+			<h1 class="title">Your ticket</h1>
+			<p>Train : {{ train_info['train_name'] }}</p>
+            <p>Type : {{ train_info['train_type'] }}</p>
+		</section>
+
+		<section class="visit">
+			<p>{{ start_station['station_name'] }}</p>
+			<p class="plane-icon">
+				<i class="fas fa-plane"></i>
+			</p>
+			<p>{{ finish_station['station_name'] }}</p>
+		</section>
+
+		<section class="time">
+			<p>
+				Department : {{ start_station['depart_time'] }}
+			</p>
+			<p>
+				Arrives : {{ finish_station['depart_time'] }}
+			</p>
+		</section>
+		<h3 class="seat-title">Seat Information</h3>
+		<section class="seat">
+
+			<p>Seat : {{ seat }}</p>
+
+		</section>
+
+		<p class="gate">Farewell!</p>
+        <p class="gate">Price: {{ price }} rub.</p>
+
+        <form action="{{ url_for('add_to_order', train_id=train_info['train_id'], seat=seat, price=price) }}" method="post">
+		<button class="btn">Click here to book ticket</button>
+        </form>
+	</article>
+</main>

@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+:root {
+	--font: "Open Sans", sans-serif;
+	--black: #000000;
+	--white: #ffffff;
+	--light-blue: #eff6ff;
+	--blue: #60a5fa;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--font);
+}
+main {
+	background-color: var(--light-blue);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ticket-wrapper {
+	box-shadow: 1px 7px 17px rgba(0, 0, 0, 0.17);
+	width: 300px;
+	background-color: var(--white);
+	padding: 1rem;
+}
+.info {
+	text-align: center;
+	margin-bottom: 0.4rem;
+}
+.visit {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 0.1rem dashed var(--black);
+	margin-bottom: 0.4rem;
+	padding-bottom: 0.4rem;
+}
+
+.plane-icon {
+	position: absolute;
+	left: 2.3rem;
+	transition: left 0.8s linear;
+	-webkit-transition: left 0.3s linear;
+	-moz-transition: left 0.3s linear;
+	-ms-transition: left 0.3s linear;
+	-o-transition: left 0.3s linear;
+}
+.fa-plane {
+	color: var(--blue);
+}
+.plane-icon.move {
+	left: 13.5rem;
+}
+
+.btn {
+	margin-top: 0.4rem;
+	width: 100%;
+	padding: 0.7rem 0;
+	border: 0;
+	background-color: var(--black);
+	color: var(--white);
+	cursor: pointer;
+	animation-name: bounce;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-fill-mode: both;
+}
+
+@keyframes bounce {
+	0% {
+		transform: scale(0.8);
+	}
+	50% {
+		transform: scale(0.9);
+	}
+	75% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.8);
+	}
+}
+
+.ticket-wrapper,
+.btn {
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+.time > p {
+	text-align: center;
+	color: var(--blue);
+	font-weight: 700;
+}
+
+.time > p:not(:last-child) {
+	border-bottom: 0.1rem dashed var(--black);
+	margin-bottom: 0.4rem;
+	padding-bottom: 0.4rem;
+}
+
+.seat-title {
+	text-align: center;
+	margin: 0.2rem 0 0.4rem 0;
+}
+
+.seat {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 0.4rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 0.1rem dashed var(--black);
+	color: var(--blue);
+	font-weight: 700;
+}
+
+.gate {
+	text-align: center;
+	font-weight: 700;
+}

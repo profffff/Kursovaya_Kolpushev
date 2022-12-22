@@ -1,0 +1,46 @@
+body { font-size: 16px; }
+header { padding: 5px; font-size: .8em; }
+header h1 { font-size: 1.5em; font-weight: bold; }
+table { border-top: solid 1px #ddd; border-bottom: solid 1px #ddd; }
+table tr { border-bottom: solid 1px #ddd; }
+section > p { text-align: center; padding: 5px; }
+
+/* Showing all columns */
+.v1 thead { display: none; }
+.v1 tr td { width: 100%; display: block; position: relative; padding-left: 40%; line-height: 24px }
+.v1 tr td:before { position: absolute; left: 5px; }
+.v1 tbody tr:nth-of-type(2n-1) { background: rgba(0,0,0,.1) }
+.v1 tr:not(.bye) td:nth-of-type(1):before { content: 'Opponent';  }
+.v1 tr td:nth-of-type(2):before { content: 'Date'; }
+.v1 tr td:nth-of-type(3):before { content: 'Location'; }
+.v1 tr td:nth-of-type(4):before { content: 'Tickets'; }
+.v1 tr td:nth-of-type(5):before { content: 'Results'; }
+.v1 tr td:nth-of-type(6):before { content: 'Record'; }
+
+@media all and (min-width : 568px) {
+  header { font-size: 1em; }
+  .v1 thead { display: table-header-group; }
+  .v1 tr td:before { position: static; display: none; content: ''; }
+  .v1 tr th { padding: 3px 10px; }
+  .v1 tr td { display: table-cell; postion: static; padding-left: 0; padding: 3px 10px; }
+  .v1 tr th:nth-of-type(1),.v1 tr td:nth-of-type(1) { width: 20%; }
+  .v1 tr th:nth-of-type(2),.v1 tr td:nth-of-type(2) { width: 20%; }
+  .v1 tr th:nth-of-type(3),.v1 tr td:nth-of-type(3) { width: 20%; }
+  .v1 tr th:nth-of-type(4),.v1 tr td:nth-of-type(4) { width: 20%; }
+  .v1 tr th:nth-of-type(5),.v1 tr td:nth-of-type(5) { width: 20%; }
+}
+
+/* removing unimportant columns  */
+.v2 tr th, .v2 tr td { padding: 3px 5px; }
+.v2 tr th:nth-of-type(3),.v2 tr td:nth-of-type(3),
+.v2 tr th:nth-of-type(4),.v2 tr td:nth-of-type(4),
+.v2 tr th:nth-of-type(6),.v2 tr td:nth-of-type(6) { display: none; }
+  @media all and (min-width : 480px) {
+    .v2 tr th:nth-of-type(3),.v2 tr td:nth-of-type(3) { display: table-cell; }
+  }
+  @media all and (min-width : 525px) {
+    .v2 tr th:nth-of-type(4),.v2 tr td:nth-of-type(4) { display: table-cell; }
+  }
+  @media all and (min-width : 568px) {
+    .v2 tr th:nth-of-type(6),.v2 tr td:nth-of-type(6) { display: table-cell; }
+  }

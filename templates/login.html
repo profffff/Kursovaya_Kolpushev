@@ -1,0 +1,59 @@
+<html lang="en">
+    <head>
+        <title style="color: brown">Login 13</title>
+        <meta name="author" content="Zaur">
+        <meta descryption content="Presentation of website">
+        <meta name="keywords" content="technology, cyber security, software">
+        <meta http-equiv="refresh" content="100">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+         <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css') }}">
+        <link rel="stylesheet" href="login13.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+		<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+		<link href="https://fonts.googleapis.com/css2 family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
+    <body>
+		<div class="login-form">
+			<header class="login-header">
+				<h2>Login</h2>
+				<h3>Enter your personal info</h3>
+			</header>
+			<form method="post" class="form">
+				<input type="text" name="login" required placeholder="Username">
+				<input type="password"  name="password" required placeholder="Password" pattern=".{8,}">
+				<button type="submit">
+					LOGIN
+					<i class="fa-sharp fa-solid fa-arrow-right"></i>
+				</button>
+                {%  if errors[0] %}
+                                <div class="invalid-feedback mv-up">Incorrect password!</div>
+                            {%  endif %}
+               {%  if errors[1] %}
+                                <div class="invalid-feedback mv-up">Account not exists!</div>
+                            {%  endif %}
+               {%  if errors[2] %}
+                                <div class="invalid-feedback mv-up">Fill out all forms!</div>
+                            {%  endif %}
+			</form>
+		</div>
+
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <p>No account <a href="{{ url_for('register') }}">Register</a></p>
+
+ </body>
+</html>

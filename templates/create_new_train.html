@@ -1,0 +1,19 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+<section>
+
+<header ><h1>ROUTES INFO</h1></header>
+    {% for route in routes %}
+    <a href="{{ url_for('new_train', route_id=route['route_id']) }}">{{ route['route_name'] }}</a>
+      </br>
+    {% endfor %}
+</div>
+</section>
+
+{% endblock %}

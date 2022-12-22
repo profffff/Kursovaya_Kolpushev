@@ -1,0 +1,25 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+<section>
+<div>
+<header ><h1>NEW ROUTE </h1></header>
+    <form method="post">
+   <a>{{ number_of_created_station }}</a>
+     <input class="form-control" type="text" name="station_name" placeholder="Station name" required>
+     <input class="form-control" type="text" name="depart_time" placeholder="yyyy-mm-dd hh:mm:ss" required>
+    <button name="button" value="next">Next station</button>
+    <button name="button" value="commit">Commit</button>
+    </form>
+    {%  if error %}
+    <a>Invalid data!</a>
+     {%  endif %}
+</div>
+</section>
+
+{% endblock %}

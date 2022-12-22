@@ -1,0 +1,21 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule_style.css') }}">
+</head>
+
+<section>
+<header><h1>Tickets</h1></header>
+{% if route_names %}
+    {% for route in route_names %}
+<a>{{ route['route_name'] }}: {{  ticket_info[loop.index0]['seat_number'] }} Depart: {{  start_from[loop.index0]['depart_time']}}</a>
+        </br></br>
+{% endfor %}
+{% else %}
+<a>Click on logo and buy new tickets!</a>
+{% endif %}
+</section>
+
+{% endblock %}
